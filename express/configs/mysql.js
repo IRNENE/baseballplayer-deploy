@@ -4,14 +4,24 @@ import mysql from 'mysql2/promise.js'
 import 'dotenv/config.js'
 
 // 資料庫連結資訊
+
 const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USERNAME,
-  port: process.env.DB_PORT,
+  port: process.env.DB_PORT || 3306,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  dateStrings: true, // 轉換日期字串格式用
+  dateStrings: true, // 將日期轉換為字符串
 })
+
+// const db = mysql.createPool({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USERNAME,
+//   port: process.env.DB_PORT,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_DATABASE,
+//   dateStrings: true, // 轉換日期字串格式用
+// })
 
 // 輸出模組
 export default db
